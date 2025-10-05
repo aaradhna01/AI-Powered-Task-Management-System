@@ -8,7 +8,8 @@
     "jsonwebtoken": "^9.0.2",
     "multer": "^2.0.2",
     "nodemailer": "^7.0.6",
-    "openai": "^5.23.1",
+    "openai": "^5.23.2",
+    "pdf-parse": "^2.1.7",
     "pg": "^8.16.3",
     "pg-hstore": "^2.3.4",
     "redis": "^5.8.2",
@@ -17,17 +18,12 @@
   "devDependencies": {
     "nodemon": "^3.1.10"
   },
-
- 
-
   "name": "backend",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-  "dev": "nodemon src/index.js"
- 
-   
+    "dev": "nodemon src/index.js"
   },
   "keywords": [],
   "author": "",

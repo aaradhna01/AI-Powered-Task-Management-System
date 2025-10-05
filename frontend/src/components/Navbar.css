@@ -1,20 +1,29 @@
 .navbar {
+  background: #2c3e50;
+  color: #fff;
+  padding: 12px 24px;
   display: flex;
-  gap: 1rem;
-  background: #333;
-  color: white;
-  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.navbar a {
-  color: white;
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-links li a {
+  color: #fff;
   text-decoration: none;
+  font-weight: 500;
 }
 
-.navbar button {
-  background: crimson;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
+.navbar-links li a:hover {
+  text-decoration: underline;
 }

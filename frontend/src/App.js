@@ -6,6 +6,8 @@ import { AuthProvider } from "./auth/AuthProvider";
 import Dashboard from "./pages/Dashboard";
 import TasksPage from "./pages/TasksPage";
 import TaskDetail from "./pages/TaskDetail";
+ import ResumeChat from "./pages/ResumeChat";
+ import ChatWithPDF from "./pages/ChatWithPDF";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
@@ -39,6 +41,9 @@ function App() {
               </ProtectedRoute>
             }
           />
+           <Route path="/resume-chat" element={<ResumeChat />} />
+           <Route path="/chat-pdf" element={<ChatWithPDF />} />
+
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>

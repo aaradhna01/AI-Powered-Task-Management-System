@@ -1,26 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import useAuth from "../auth/useAuth";
-import "./Navbar.css";
+import "./Navbar.css"; // custom css
 
 export default function Navbar() {
-  const { user, logout } = useAuth();
-
   return (
     <nav className="navbar">
-      <Link to="/">Dashboard</Link>
-      <Link to="/tasks">Tasks</Link>
-      {user ? (
-        <>
-          <span>Hello, {user.name}</span>
-          <button onClick={logout}>Logout</button>
-        </>
-      ) : (
-        <>
-          <Link to="/login">Login</Link>
-          <Link to="/register">Register</Link>
-        </>
-      )}
+      <div className="navbar-logo">Task Manager</div>
+      <ul className="navbar-links">
+        <li><Link to="/dashboard">Dashboard</Link></li>
+        <li><Link to="/tasks">Tasks</Link></li>
+         <Link to="/pdf-chat">Chat with PDF</Link>
+
+        <li><Link to="/login">Login</Link></li>
+        <li><Link to="/register">Register</Link></li>
+      </ul>
     </nav>
   );
 }

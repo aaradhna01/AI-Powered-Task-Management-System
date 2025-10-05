@@ -7,6 +7,8 @@ const taskRoutes = require("./routes/tasks");
 const aiRoutes = require("./routes/ai");
 const taskAttachmentRoutes = require("./routes/taskAttachments");
 const userSessionRoutes = require("./routes/userSessions");
+const pdfChatRoutes = require("./routes/pdfChat");
+const resumeRoutes = require("./routes/resume");
 const errorHandler = require("./middleware/errorHandler");
 const dotenv = require("dotenv");
 
@@ -23,6 +25,9 @@ app.use("/api/tasks", taskRoutes);
 app.use("/api/ai", aiRoutes);
 app.use("/api/attachments", taskAttachmentRoutes); 
 app.use("/api/sessions", userSessionRoutes);
+app.use("/api/pdf", pdfChatRoutes);
+app.use("/api/resume", resumeRoutes);
+
 
 
 

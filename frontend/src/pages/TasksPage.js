@@ -9,9 +9,7 @@ export default function TasksPage() {
   useEffect(() => {
     async function fetchTasks() {
       try {
-        const res = await api.get("/api/tasks", {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        });
+        const res = await api.get("/tasks"); // ✅ fix here
         setTasks(res.data);
       } catch (err) {
         console.error(err);
@@ -25,11 +23,7 @@ export default function TasksPage() {
     if (!newTask.trim()) return;
 
     try {
-      const res = await api.post(
-        "/api/tasks",
-        { title: newTask, description: "" },
-        { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
-      );
+      const res = await api.post("/tasks", { title: newTask, description: "" }); // ✅ fix here
       setTasks([...tasks, res.data]);
       setNewTask("");
     } catch (err) {

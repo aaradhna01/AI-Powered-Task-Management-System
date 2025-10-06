@@ -1,15 +1,14 @@
+// src/App.js
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import ProtectedRoute from "./components/ProtectedRoute";
-import { AuthProvider } from "./auth/AuthProvider";
-import Dashboard from "./pages/Dashboard";
-import TasksPage from "./pages/TasksPage";
-import TaskDetail from "./pages/TaskDetail";
- import ResumeChat from "./pages/ResumeChat";
- import ChatWithPDF from "./pages/ChatWithPDF";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
+import TasksPage from "./pages/TasksPage";
+import ChatWithPDF from "./pages/ChatWithPDF";
+import ProtectedRoute from "./components/ProtectedRoute";
+import { AuthProvider } from "./auth/useAuth";
 
 function App() {
   return (
@@ -17,6 +16,11 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
+          {/* Public Routes */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+
+          {/* Protected Routes */}
           <Route
             path="/"
             element={
@@ -34,18 +38,13 @@ function App() {
             }
           />
           <Route
-            path="/tasks/:id"
+            path="/chat"
             element={
               <ProtectedRoute>
-                <TaskDetail />
+                <ChatWithPDF />
               </ProtectedRoute>
             }
           />
-           <Route path="/resume-chat" element={<ResumeChat />} />
-           <Route path="/chat-pdf" element={<ChatWithPDF />} />
-
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

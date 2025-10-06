@@ -1,14 +1,24 @@
-// src/components/ProtectedRoute.js
+// // src/components/ProtectedRoute.js
+// import React from "react";
+// import { Navigate } from "react-router-dom";
+// import useAuth from "../auth/useAuth";
+
+// export default function ProtectedRoute({ children }) {
+//   const { user } = useAuth();
+
+//   if (!user) {
+//     return <Navigate to="/login" replace />;
+//   }
+
+//   return children;
+// }
+
 import React from "react";
 import { Navigate } from "react-router-dom";
 import useAuth from "../auth/useAuth";
 
 export default function ProtectedRoute({ children }) {
   const { user } = useAuth();
-
-  if (!user) {
-    return <Navigate to="/login" replace />;
-  }
-
+  if (!user) return <Navigate to="/login" />;
   return children;
 }

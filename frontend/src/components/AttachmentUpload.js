@@ -12,7 +12,7 @@ export default function AttachmentUpload({ taskId }) {
       headers: { "Content-Type": "multipart/form-data" },
     });
     alert("File uploaded!");
-  };
+  }; 
 
   return (
     <div>

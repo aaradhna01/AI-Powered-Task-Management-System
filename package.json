@@ -1,0 +1,11 @@
+{
+  "homepage": "https://aaradhna01.github.io/AI-Powered-Task-Management-System/"
+,  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  },
+
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  }
+}

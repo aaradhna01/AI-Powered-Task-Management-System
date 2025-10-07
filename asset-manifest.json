@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/AI-Powered-Task-Management-System/static/css/main.82f48c48.css",
+    "main.js": "/AI-Powered-Task-Management-System/static/js/main.688b61db.js",
+    "index.html": "/AI-Powered-Task-Management-System/index.html",
+    "main.82f48c48.css.map": "/AI-Powered-Task-Management-System/static/css/main.82f48c48.css.map",
+    "main.688b61db.js.map": "/AI-Powered-Task-Management-System/static/js/main.688b61db.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.82f48c48.css",
+    "static/js/main.688b61db.js"
+  ]
+}

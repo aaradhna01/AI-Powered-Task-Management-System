@@ -1,3 +1,4 @@
+// index.js
 const express = require("express");
 const cors = require("cors");
 const sequelize = require("./config/db");
@@ -11,21 +12,16 @@ const taskAttachmentRoutes = require("./routes/taskAttachments");
 const userSessionRoutes = require("./routes/userSessions");
 const pdfChatRoutes = require("./routes/pdfChat");
 const resumeRoutes = require("./routes/resume");
+
 const errorHandler = require("./middleware/errorHandler");
 
 dotenv.config();
 const app = express();
 
-// ✅ FINAL CORS setup (complete)
+// ✅ Localhost ke liye CORS setup
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "https://aaradhna01.github.io",
-      "https://aaradhna01.github.io/AI-Powered-Task-Management-System",
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    origin: "http://localhost:3000",
     credentials: true,
   })
 );
@@ -42,14 +38,14 @@ app.use("/api/sessions", userSessionRoutes);
 app.use("/api/pdf", pdfChatRoutes);
 app.use("/api/resume", resumeRoutes);
 
-// ✅ Error handler
+// ✅ Error handling middleware
 app.use(errorHandler);
 
-// ✅ DB sync
+// ✅ DB Sync
 sequelize.sync({ alter: true }).then(() => {
   console.log("✅ Database synced successfully");
 });
 
-// ✅ Start server
+// ✅ Start server (Local)
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

@@ -51,12 +51,13 @@
 // app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
 
 
-// index.js
+// ✅ index.js (for Vercel deployment)
 const express = require("express");
 const cors = require("cors");
 const sequelize = require("./config/db");
 const dotenv = require("dotenv");
 
+// Import all routes
 const authRoutes = require("./routes/auth");
 const dashboardRoutes = require("./routes/dashboard");
 const taskRoutes = require("./routes/tasks");
@@ -67,20 +68,28 @@ const pdfChatRoutes = require("./routes/pdfChat");
 const resumeRoutes = require("./routes/resume");
 const errorHandler = require("./middleware/errorHandler");
 
+// Load .env file
 dotenv.config();
+
+// Initialize Express app
 const app = express();
 
-// ✅ CORS setup
+// ✅ Allow JSON body
+app.use(express.json());
+
+// ✅ Proper CORS setup for both local + deployed frontend
 app.use(
   cors({
-    origin: "*", // 🔄 change from localhost to * for deployment
+    origin: [
+      "http://localhost:3000", // Local frontend
+      "https://aaradhna01.github.io", // Your GitHub Pages domain
+      "https://aaradhna01.github.io/AI-Powered-Task-Management-System", // GitHub Pages subpath
+    ],
     credentials: true,
   })
 );
 
-app.use(express.json());
-
-// ✅ Routes
+// ✅ All API routes
 app.use("/api/auth", authRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/tasks", taskRoutes);
@@ -90,14 +99,22 @@ app.use("/api/sessions", userSessionRoutes);
 app.use("/api/pdf", pdfChatRoutes);
 app.use("/api/resume", resumeRoutes);
 
-// ✅ Error handling
+// ✅ Error handling middleware
 app.use(errorHandler);
 
-// ✅ DB Sync
+// ✅ Database connection + sync
 sequelize
-  .sync({ alter: true })
-  .then(() => console.log("✅ Database synced successfully"))
-  .catch((err) => console.error("❌ DB sync error:", err));
+  .authenticate()
+  .then(() => {
+    console.log("✅ Database connected successfully");
+    return sequelize.sync({ alter: true });
+  })
+  .then(() => {
+    console.log("✅ Tables synced successfully");
+  })
+  .catch((err) => {
+    console.error("❌ Database connection error:", err);
+  });
 
-// ✅ Export app instead of app.listen() for Vercel
+// ✅ Export app (important for Vercel)
 module.exports = app;
